@@ -1,7 +1,7 @@
 
 import { Movie } from "../../models/index.js"
 
-class moviesSeeder {
+class MoviesSeeder {
     static async seed() {
         const moviesData = [
             {
@@ -36,4 +36,4 @@ class moviesSeeder {
     }
 }
 
-export default moviesSeeder
+export default MoviesSeeder

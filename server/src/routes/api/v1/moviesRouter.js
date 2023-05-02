@@ -7,9 +7,9 @@ const moviesRouter = new express.Router()
 moviesRouter.get("/", async (req, res) => {
     try {
         const movies = await Movie.query()
-        res.set({"Content-Type": "application/json"}).status(200).json({ movies })
+        res.status(200).json({ movies })
     } catch (error) {
-        res.set({"Content-Type": "application/json"}).status(500).json({ errors: error.message })
+        res.status(500).json({ errors: error.message })
     }
 })
 

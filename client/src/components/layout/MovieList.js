@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
+import MovieTile from "./MovieTile.js"
 
 const MovieList = (props) => {
     const [movies, setMovies] = useState([])
 
     const getMovies = async() => {
         try {
-            const response = await fetch(`/api/v1/movies`)
+            const response = await fetch("/api/v1/movies")
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
@@ -24,27 +25,14 @@ const MovieList = (props) => {
 
     const moviesListArray = movies.map((movie)=> {
         return (
-            <>
-                <li key={movie.id}>
-                    {movie.title}
-                </li>
-                <br></br>
-                <p>
-                    Release Year: {movie.year} 
-                </p>
-                <p>
-                    Genre: {movie.genre} 
-                </p>
-                <img src={movie.movieImageUrl} alt="movie-posters" width="200" height="200"></img>
-                <hr></hr>
-            </>
+            <MovieTile movie={movie} key={movie.id}/>
         )
     })
 
     return (
         <>
             <h1>All Movies</h1>
-            <ul>
+            <ul className="no-bullet">
                 {moviesListArray}
             </ul>
         </>
