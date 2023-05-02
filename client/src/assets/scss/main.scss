@@ -1,6 +1,8 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+
+@import "./styles.scss";
 // place global css here
 *,
 *::before,
