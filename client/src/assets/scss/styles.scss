@@ -1,4 +1,33 @@
+$Primary-Color: #0A1828;
+$Text-Color: #BFA181;
+$Small-Text-Color: #869BA9;
 .movie-poster {
-    width: 200px;
-    height: 296.30px;
+    width: 100px;
+    height: 148.15px;
+}
+
+body {
+    background-color: $Primary-Color;
+    }
+
+.border {
+    border-color: $Text-Color;
+    border-width: 3px;
+    background-color: #001F33E6;
+
+    h4 {
+        color: $Text-Color
+    }
+    
+    p {
+        color: $Small-Text-Color
+    }
+}
+
+.movie-list-title {
+    color:  #BFA181;
+}
+
+.Welcome-Message {
+    color: $Text-Color;
 }

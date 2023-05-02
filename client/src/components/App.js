@@ -25,17 +25,19 @@ const App = (props) => {
   }, [])
 
   return (
+    <div className="background">
     <Router>
       <TopBar user={currentUser} />
       <Switch>
         <Route exact path="/">
-          <h2>Hello from react</h2>
+          <h2 className="Welcome-Message">Welcome to the Movies Review App</h2>
         </Route>
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/movies" component={MovieList} />
       </Switch>
     </Router>
+    </div>
   );
 };
 

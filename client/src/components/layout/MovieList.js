@@ -25,13 +25,15 @@ const MovieList = (props) => {
 
     const moviesListArray = movies.map((movie)=> {
         return (
+            
             <MovieTile movie={movie} key={movie.id}/>
+           
         )
     })
 
     return (
         <>
-            <h1>All Movies</h1>
+            <h1 className="movie-list-title">All Movies</h1>
             <div>
                 {moviesListArray}
             </div>
