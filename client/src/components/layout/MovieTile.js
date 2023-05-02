@@ -1,18 +1,16 @@
 import React from "react"
-import '../../assets/scss/styles.scss'
 
 const MovieTile = ( { movie }) => {
 
-    return (
-        <div className="grid-container"> 
+    return ( 
             <div className="grid-x grid-margin-x callout primary">
                 <div className="text-right cell">
-                    <li key={movie.id} >
+                    <p key={movie.id} >
                         {movie.title}
-                    </li>
+                    </p>
                 </div>
                 <p className="text-right cell">
-                    Release Year: {movie.year} 
+                    Release Years: {movie.year} 
                 </p>
                 <p className="text-right cell">
                     Genre: {movie.genre} 
@@ -21,7 +19,6 @@ const MovieTile = ( { movie }) => {
                     <img className="movie-poster" src={movie.movieImageUrl} alt="movie-posters"></img>
                 </div>
             </div>
-        </div>
     )
 }
 

@@ -32,9 +32,9 @@ const MovieList = (props) => {
     return (
         <>
             <h1>All Movies</h1>
-            <ul className="no-bullet">
+            <div>
                 {moviesListArray}
-            </ul>
+            </div>
         </>
     )
 }

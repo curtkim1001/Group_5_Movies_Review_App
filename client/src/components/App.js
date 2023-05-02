@@ -4,6 +4,7 @@ import { hot } from "react-hot-loader/root";
 
 import getCurrentUser from "../services/getCurrentUser";
 import "../assets/scss/main.scss";
+import '../assets/scss/styles.scss'
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
