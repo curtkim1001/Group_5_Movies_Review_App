@@ -6,6 +6,9 @@ $Secondary-Color: #001F33E6;
 .movie-poster {
     width: 100px;
     height: 148.15px;
+    border: solid;
+    border-width: 3px;
+    border-color: $Text-Color
 }
 
 body {
@@ -14,8 +17,10 @@ body {
 
 .border {
     border-color: $Text-Color;
-    border-width: 3px;
+    border-width: 2px;
     background-color: $Secondary-Color;
+    margin-left: 5em;
+    margin-right: 5em;
 
 
     h4 {
@@ -40,3 +45,40 @@ body {
     text-align: center;
 }
 
+
+.movie-show {
+    color: $Small-Text-Color;
+    display: block;
+    margin-bottom: 10px;
+
+    p {
+        margin-top: 20px;
+        color: $Small-Text-Color
+    }
+
+    h2 {
+        color: $Text-Color;
+        text-align: center;
+    }
+
+    h4 {
+        color: $Text-Color;
+    }
+
+    img {
+        width: 400px;
+        height: 600px;
+    }
+
+    .content {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .movie-content {
+        background-color: $Secondary-Color;
+        border-width: 2em;
+    }
+
+}
