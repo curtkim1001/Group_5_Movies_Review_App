@@ -98,7 +98,7 @@ const SignInForm = () => {
           </label>
               </div>
         </div>
-        <div className="">
+        <div>
           <input type="submit" className="button" value="Sign In" />
         </div>
       </form>
