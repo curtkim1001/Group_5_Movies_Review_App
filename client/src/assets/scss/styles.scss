@@ -17,8 +17,11 @@ body {
     border-width: 3px;
     background-color: $Secondary-Color;
 
+
     h4 {
         color: $Text-Color;
+        
+        
     }
     
     p {
@@ -28,8 +31,12 @@ body {
 
 .movie-list-title {
     color: $Text-Color;
+    text-align: center;
+
 }
 
-.Welcome-Message {
+.welcome-message {
     color: $Text-Color;
+    text-align: center;
 }
+

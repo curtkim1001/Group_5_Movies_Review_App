@@ -7,7 +7,7 @@ const MovieTile = ( { movie }) => {
         <div className="cell small-3">
             <img className="movie-poster" src={movie.movieImageUrl} alt="movie-posters"></img>
         </div>
-        <div className="cell small-9 border">
+        <div className="small-6 border">
             <h4><strong>{movie.title}</strong></h4>
             <p>Release Year: {movie.year}</p>
             <p>Genre: {movie.genre}</p>

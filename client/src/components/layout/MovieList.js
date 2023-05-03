@@ -25,9 +25,7 @@ const MovieList = (props) => {
 
     const moviesListArray = movies.map((movie)=> {
         return (
-            
             <MovieTile movie={movie} key={movie.id}/>
-           
         )
     })
 

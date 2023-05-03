@@ -1,35 +1,35 @@
-#Movies Review Web App
+# Movies Review Web App
 
 An app where users can see movie reviews and post their own reviews.
 
-##Authors
+## Authors
 
 Curt Kim, Solomon Montagno, Jose Estrada
 
-##Installation
+## Installation
 
-Clone this repository:
+### Clone this repository:
 
 ```
 git clone https://github.com/dhk2431/Group_5_Movies_Review_App
 ```
 
-Install the dependencies:
+### Install the dependencies:
 
 ```
 cd Group_5_Movies_Review_App
 yarn install
 ```
 
-##Usage
+## Usage
 
-To run the server:
+### To run the server:
 
 ```
 yarn dev
 ```
 
-To make the database:
+### To make the database:
 
 ```
 createdb movies-review-app_development
@@ -40,21 +40,22 @@ yarn migrate:make movies
 yarn migrate:latest
 ```
 
-##[Text for the link here](URL here!)
+## [Text for the link here](URL here!)
 
-##Features:
+## Features:
 
-###List of movies
+- List of movies
 
-###A Nav-bar
+- A Nav-bar
 
-###User authentication
+- User authentication
 
-###Clicking the movies lets you see its details and submit a review if you are a registered user
+- Clicking the movies lets you see its details and submit a review if you are a registered user
 
-###You can leave a comment under a review
+- You can leave a comment under a review
 
-##Technologies in the project here:
+## Technologies in the project here:
 
-###Technology1
-###Technology2
+- Technology1
+
+- Technology2
