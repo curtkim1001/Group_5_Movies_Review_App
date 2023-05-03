@@ -3,6 +3,7 @@ import { Redirect, Link } from "react-router-dom"
 
 const MovieTile = ({ movie }) => {
 
+
     return (
     <>
         <Link to={`/movies/${movie.id}`}>
