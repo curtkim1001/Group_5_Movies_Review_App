@@ -76,6 +76,7 @@ const SignInForm = () => {
       <form>
         <div className="grid-x">
           <div className="center small-4"> 
+
           <label className="welcome-message">
             Email
             <input type="text" name="email"  placeholder="Email" value={userPayload.email} onChange={onInputChange} />
@@ -83,8 +84,10 @@ const SignInForm = () => {
           </label>
           </div>
         </div>
+
         <div className="grid-x">
             <div className="center small-4">
+
           <label className="welcome-message">
             Password
             <input
