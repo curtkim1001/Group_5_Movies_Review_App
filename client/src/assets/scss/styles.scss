@@ -3,25 +3,28 @@ $Text-Color: #BFA181;
 $Small-Text-Color: #869BA9;
 $Secondary-Color: #001F33E6;
 
-.movie-poster {
-    width: 100px;
-    height: 148.15px;
+
+a {
+    color: turquoise;
 }
 
 body {
     background-color: $Primary-Color;
 }
 
+.movie-poster {
+    height: 148.15px;
+    min-width: 6em !important;
+}
+
+
 .border {
     border-color: $Text-Color;
     border-width: 3px;
     background-color: $Secondary-Color;
 
-
     h4 {
         color: $Text-Color;
-        
-        
     }
     
     p {
@@ -38,5 +41,45 @@ body {
 .welcome-message {
     color: $Text-Color;
     text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
+.logo{
+    display: block;
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    border: solid;
+    border-color: $Text-Color;
+    border-width: 3px;
+    
+}
+
+.authors{
+    color: $Text-Color;
+    text-align: center;
+    padding-top: 30px ;
+}
+
+.center{
+    margin-left: auto;
+    margin-right:auto;
+}
+
+.nav-bar {
+    background-color: gray;
+
+    ul {
+        background-color: gray;
+    }
+}
+
+
+.cool {
+    background-color: white;
+    box-shadow: 10px 10px $Text-Color;
+    margin-left: 650px;
+    margin-right: 300px;
+    margin-top: 50px;
+}
