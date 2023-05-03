@@ -92,11 +92,13 @@ const RegistrationForm = () => {
   }
 
   return (
+
     <div className="grid-container welcome-message cool">
       <h1>Register</h1>
       <form onSubmit={onSubmit}>
         <div className="grid-x">
           <div className="center small-4">
+
           <label className="welcome-message">
             Email
             <input type="text" name="email" placeholder="Email" value={userPayload.email} onChange={onInputChange} />
@@ -104,6 +106,7 @@ const RegistrationForm = () => {
           </label>
           </div>
         </div>
+
         <div className="grid-x">
           <div className="center small-4">
           <label className="welcome-message">
@@ -119,8 +122,10 @@ const RegistrationForm = () => {
           </label>
           </div>
         </div>
+
         <div className="grid-x">
           <div className="center small-4">
+
           <label className="welcome-message">
             Password Confirmation
             <input

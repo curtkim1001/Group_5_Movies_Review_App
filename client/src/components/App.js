@@ -8,6 +8,7 @@ import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
 import MovieList from "./layout/MovieList.js"
 import WelcomeMessage from "./layout/WelcomeMessage.js";
+import MovieShow from "./layout/MovieShow.js"
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
@@ -15,7 +16,7 @@ const App = (props) => {
     try {
       const user = await getCurrentUser()
       setCurrentUser(user)
-    } catch(err) {
+    } catch (err) {
       setCurrentUser(null)
     }
   }
@@ -25,17 +26,16 @@ const App = (props) => {
   }, [])
 
   return (
-    <div className="background">
     <Router>
       <TopBar user={currentUser} />
       <Switch>
-        <Route exact path="/" component={WelcomeMessage}/>
+        <Route exact path="/" component={WelcomeMessage} />
         <Route exact path="/users/new" component={RegistrationForm} />
         <Route exact path="/user-sessions/new" component={SignInForm} />
         <Route exact path="/movies" component={MovieList} />
+        <Route exact path="/movies/:id" component={MovieShow} />
       </Switch>
     </Router>
-    </div>
   );
 };
 
