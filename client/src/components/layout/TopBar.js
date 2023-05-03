@@ -21,14 +21,14 @@ const TopBar = ({ user }) => {
   ];
 
   return (
-    <div className="top-bar">
+    <div className="top-bar nav-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <li className="menu-text">Menu</li>
+          <li className="menu-text">Reel Reviews</li>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li> 
+          <li>
             <Link to="/movies">Movies</Link>
           </li>
         </ul>
