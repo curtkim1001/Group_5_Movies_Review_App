@@ -1,4 +1,42 @@
+$Primary-Color: #0A1828;
+$Text-Color: #BFA181;
+$Small-Text-Color: #869BA9;
+$Secondary-Color: #001F33E6;
+
 .movie-poster {
-    width: 200px;
-    height: 296.30px;
+    width: 100px;
+    height: 148.15px;
 }
+
+body {
+    background-color: $Primary-Color;
+}
+
+.border {
+    border-color: $Text-Color;
+    border-width: 3px;
+    background-color: $Secondary-Color;
+
+
+    h4 {
+        color: $Text-Color;
+        
+        
+    }
+    
+    p {
+        color: $Small-Text-Color;
+    }
+}
+
+.movie-list-title {
+    color: $Text-Color;
+    text-align: center;
+
+}
+
+.welcome-message {
+    color: $Text-Color;
+    text-align: center;
+}
+
