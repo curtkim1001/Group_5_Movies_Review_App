@@ -3,13 +3,17 @@ import config from "../../config";
 import FormError from "../layout/FormError";
 
 const SignInForm = () => {
-  const [userPayload, setUserPayload] = useState({ email: "", password: "" });
+  const [userPayload, setUserPayload] = useState({ 
+    email: "", 
+    password: "",
+    username: ""
+    });
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password } = payload;
+    const { email, password, username } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
     if (!email.match(emailRegexp)) {
@@ -17,6 +21,20 @@ const SignInForm = () => {
         ...newErrors,
         email: "is invalid",
       };
+    }
+
+    if (username.trim() === "") {
+      newErrors = {
+        ...newErrors, 
+        username: "is required"
+      }
+    }
+
+    if (username.length < 5) {
+      newErrors = {
+        ...newErrors,
+        username: "must be at least 5 characters long"
+      }
     }
 
     if (password.trim() === "") {
@@ -81,6 +99,17 @@ const SignInForm = () => {
             Email
             <input type="text" name="email"  placeholder="Email" value={userPayload.email} onChange={onInputChange} />
             <FormError error={errors.email} />
+          </label>
+          </div>
+        </div>
+
+        <div className="grid-x">
+          <div className="center small-4"> 
+
+          <label className="welcome-message">
+            Username
+            <input type="text" name="username"  placeholder="username or user ID" value={userPayload.username} onChange={onInputChange} />
+            <FormError error={errors.username} />
           </label>
           </div>
         </div>

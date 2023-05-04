@@ -1,8 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
+  let username, admin
+  if(user) {
+    username = user.username
+    admin = "logged in as administator"
+  }
+  else {
+    username = "User Name"
+    admin = "administrator"
+  }
+
   const unauthenticatedListItems = [
     <li key="sign-in">
       <Link to="/user-sessions/new">Sign In</Link>
@@ -15,6 +25,14 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
+    <li key="admin">
+      {admin}
+    </li>,
+    <li key="username">
+      <button type="button" className="button" >
+        Username: {username}
+      </button>
+    </li>,
     <li key="sign-out">
       <SignOutButton />
     </li>,

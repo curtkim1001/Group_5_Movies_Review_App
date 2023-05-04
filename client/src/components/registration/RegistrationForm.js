@@ -7,6 +7,8 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    username: "",
+    admin: false
   });
 
   const [errors, setErrors] = useState({});
@@ -15,7 +17,7 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation } = payload;
+    const { email, password, passwordConfirmation, username, admin } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
 
@@ -24,6 +26,20 @@ const RegistrationForm = () => {
         ...newErrors,
         email: "is invalid",
       };
+    }
+
+    if (username.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        username: "is required"
+      }
+    }
+
+    if (username.length < 5) {
+      newErrors = {
+        ...newErrors,
+        username: "must be at least 5 characters long"
+      }
     }
 
     if (password.trim() == "") {
@@ -85,6 +101,20 @@ const RegistrationForm = () => {
       ...userPayload,
       [event.currentTarget.name]: event.currentTarget.value,
     });
+    if (event.currentTarget.name === "admin") {
+      if (event.currentTarget.checked) {
+        setUserPayload({
+          ...userPayload,
+          [event.currentTarget.name]: true
+        });
+      }
+      else {
+        setUserPayload({
+          ...userPayload,
+          [event.currentTarget.name]: false,
+        });
+      }
+    }
   };
 
   if (shouldRedirect) {
@@ -103,6 +133,17 @@ const RegistrationForm = () => {
             Email
             <input type="text" name="email" placeholder="Email" value={userPayload.email} onChange={onInputChange} />
             <FormError error={errors.email} />
+          </label>
+          </div>
+        </div>
+
+        <div className="grid-x">
+          <div className="center small-4">
+
+          <label className="welcome-message">
+            Username
+            <input type="text" name="username" placeholder="username or user ID" value={userPayload.username} onChange={onInputChange} />
+            <FormError error={errors.username} />
           </label>
           </div>
         </div>
@@ -136,6 +177,21 @@ const RegistrationForm = () => {
               onChange={onInputChange}
             />
             <FormError error={errors.passwordConfirmation} />
+          </label>
+          </div>
+        </div>
+
+        <div className="grid-x">
+          <div className="center small-4">
+
+          <label className="welcome-message">
+            Administrator
+            <input
+              type="checkbox"
+              name="admin"
+              value={userPayload.admin}
+              onChange={onInputChange}
+            />
           </label>
           </div>
         </div>
