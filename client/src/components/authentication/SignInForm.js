@@ -7,7 +7,7 @@ const SignInForm = () => {
     email: "", 
     password: "",
     username: ""
-    });
+  });
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -105,31 +105,30 @@ const SignInForm = () => {
 
         <div className="grid-x">
           <div className="center small-4"> 
-
-          <label className="welcome-message">
-            Username
-            <input type="text" name="username"  placeholder="username or user ID" value={userPayload.username} onChange={onInputChange} />
-            <FormError error={errors.username} />
-          </label>
+            <label className="welcome-message">
+              Username
+              <input type="text" name="username"  placeholder="username or user ID" value={userPayload.username} onChange={onInputChange} />
+              <FormError error={errors.username} />
+            </label>
           </div>
         </div>
 
         <div className="grid-x">
-            <div className="center small-4">
-
-          <label className="welcome-message">
-            Password
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={userPayload.password}
-              onChange={onInputChange}
-              />
-            <FormError error={errors.password} />
-          </label>
-              </div>
+          <div className="center small-4">
+            <label className="welcome-message">
+              Password
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={userPayload.password}
+                onChange={onInputChange}
+                />
+              <FormError error={errors.password} />
+            </label>
+          </div>
         </div>
+        
         <div>
           <input type="submit" className="button" value="Sign In" />
         </div>

@@ -4,11 +4,10 @@ import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
   let username, admin
-  if(user) {
+  if (user) {
     username = user.username
     admin = "logged in as administator"
-  }
-  else {
+  } else {
     username = "User Name"
     admin = "administrator"
   }

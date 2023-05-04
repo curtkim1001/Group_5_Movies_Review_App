@@ -181,20 +181,6 @@ const RegistrationForm = () => {
           </div>
         </div>
 
-        <div className="grid-x">
-          <div className="center small-4">
-
-          <label className="welcome-message">
-            Administrator
-            <input
-              type="checkbox"
-              name="admin"
-              value={userPayload.admin}
-              onChange={onInputChange}
-            />
-          </label>
-          </div>
-        </div>
         <div>
           <input type="submit" className="button" value="Register" />
         </div>

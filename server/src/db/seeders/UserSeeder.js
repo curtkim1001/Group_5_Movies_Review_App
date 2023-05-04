@@ -2,16 +2,27 @@ import { User } from "../../models/index.js"
 
 class UserSeeder {
     static async seed() {
-        const adminData = {
-            username: "launchacademy",
+        const userData = [
+            {
+            username: "launchacademy1",
             email:"launchacademy@gmail.com",
-            cryptedPassword:"launch12345",
+            password: "launch",
+            admin: false
+            }, 
+            {
+            username: "curtkim1",
+            email:"curtkim@email.com",
+            password:"12345",
             admin: true
-        }
+            }
+        ]
         
-        const currentAdmin = await User.query().findOne({ email: adminData.email })
-        if (!currentAdmin) {
-            await User.query().insert(adminData)
+        for (const singleUser of userData) {
+            const currentUser = await User.query().findOne({ email: singleUser.email })
+            if (!currentUser) {
+                // singleUser.cryptedPassword = await Bcrypt.hashSync(singleUser.cryptedPassword, 10);
+                await User.query().insert(singleUser)
+            }
         }
     }
 }

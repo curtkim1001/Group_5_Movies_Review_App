@@ -7,7 +7,9 @@ const authHandler = (email, password, done) => {
     .findOne({ email })
     .then((user) => {
       if (user) {
+        console.log(password)
         if (user.authenticate(password)) {
+          console.log("auth successful")
           return done(null, user);
         }
 

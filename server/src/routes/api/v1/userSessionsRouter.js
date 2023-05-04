@@ -21,6 +21,7 @@ sessionRouter.post("/", (req, res, next) => {
 });
 
 sessionRouter.get("/current", async (req, res) => {
+  console.log(req.user)
   if (req.user) {
     res.status(200).json(req.user);
   } else {
