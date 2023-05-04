@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react"
-import { generatePath } from "react-router-dom"
-
+import ReviewList from "./ReviewList"
 const MovieShow = (props) => {
     const [movie, setMovie] = useState({
         title: "",
         year: "",
         genre: "",
         synopsis: "",
-        movieImageUrl: ""
+        movieImageUrl: "",
+        
     })
-    const movieId = props.match.params.id
+    const [reviews, setReviews] = useState([])
 
     const getMovie = async () => {
+        const movieId = props.match.params.id
         try {
             const response = await fetch(`/api/v1/movies/${movieId}`)
             if (!response.ok) {
@@ -21,6 +22,7 @@ const MovieShow = (props) => {
             }
             const movieData = await response.json()
             setMovie(movieData.movie)
+            setReviews(movieData.movie.reviews)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -42,8 +44,10 @@ const MovieShow = (props) => {
                 </div>
                 <img src={movie.movieImageUrl} alt="movie-poster"></img>
             </div>
+            < ReviewList movieReviews={reviews}/>
         </div>
     )
 }
+
 
 export default MovieShow
