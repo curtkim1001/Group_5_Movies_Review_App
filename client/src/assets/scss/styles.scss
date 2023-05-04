@@ -30,6 +30,8 @@ body {
 
     h4 {
         color: $Text-Color;
+        font-weight: bold;
+
     }
     
     p {
@@ -84,6 +86,7 @@ body {
         background-color: $Secondary-Color;
         border-width: 2em;
     }
+
 
 .logo{
     display: block;

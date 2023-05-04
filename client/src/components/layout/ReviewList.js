@@ -8,22 +8,16 @@ const ReviewList = (props) => {
             message = "Spoiler Alert!"
         }
         return (
-            <div className="callout">
-                <h2> 
-                    {reviews.content}
-                </h2>
-                <p>
-                    {reviews.rating}
-                </p>
-                <p>
-                    {message}
-                </p>
+            <div key={reviews.id} className="callout">
+                <h2>{reviews.content}</h2>
+                <p>{reviews.rating}</p>
+                <p> {message}</p>
             </div>
         )
     })
     return (
         <>
-        {allReviewsArray}
+            {allReviewsArray}
         </>
     )
 }

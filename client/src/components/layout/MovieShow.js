@@ -44,10 +44,9 @@ const MovieShow = (props) => {
                 </div>
                 <img src={movie.movieImageUrl} alt="movie-poster"></img>
             </div>
-            < ReviewList movieReviews={reviews}/>
+            <ReviewList movieReviews={reviews}/>
         </div>
     )
 }
-
 
 export default MovieShow

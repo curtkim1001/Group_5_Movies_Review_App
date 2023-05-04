@@ -1,6 +1,6 @@
 import express from "express"
 import objection from "objection"
-import { Movie, Review } from "../../../models/index.js"
+import { Movie } from "../../../models/index.js"
 const moviesRouter = new express.Router()
 
 moviesRouter.get("/", async (req, res) => {
