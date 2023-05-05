@@ -31,19 +31,15 @@ cd server
 Create a new database called “movies-review-app_development”
 createdb movies-review-app_development
 
-Make sure to yarn install before migrating anything into the database so all the dependencies and packages are configured.
 yarn install
 
-Create a migration for the movies table so that it can take in a required title, year, genre and an optional synopsis and link for a poster of the movie.
-yarn run migrate:make "name of migration for movies table"
-
 Make sure to migrate the table to the database
-yarn run migrate:latest && yarn run migrate:rollback && yarn run migrate:latest
+yarn run migrate:latest
 
-Once all the migrations are set, ensure that the seeded data is added to your database
+Seed the database
 yarn db:seed
 
-Lastly, connect to have the server up and running!
+Start up server
 yarn run dev
 
 ## [Text for the link here](URL here!)
