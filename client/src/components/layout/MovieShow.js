@@ -1,18 +1,25 @@
 import React, { useState, useEffect } from "react"
-import ReviewList from "./ReviewList"
+import ReviewList from "./ReviewList.js"
+import MovieReviewForm from "./MovieReviewForm.js"
+import { useParams } from 'react-router-dom';
+
 const MovieShow = (props) => {
+
+    // let reviewForm
+    const movieId = useParams()
+    // const movieId = props.match.params.id
+
     const [movie, setMovie] = useState({
         title: "",
         year: "",
         genre: "",
         synopsis: "",
         movieImageUrl: "",
-        
     })
     const [reviews, setReviews] = useState([])
 
     const getMovie = async () => {
-        const movieId = props.match.params.id
+        
         try {
             const response = await fetch(`/api/v1/movies/${movieId}`)
             if (!response.ok) {
@@ -22,6 +29,7 @@ const MovieShow = (props) => {
             }
             const movieData = await response.json()
             setMovie(movieData.movie)
+            
             setReviews(movieData.movie.reviews)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -31,6 +39,14 @@ const MovieShow = (props) => {
     useEffect(() => {
         getMovie()
     }, [])
+
+    if (props.user) {
+
+    } else {
+
+    }
+    debugger
+
 
     return (
         <div className="movie-show grid-container grid-x">
@@ -44,7 +60,10 @@ const MovieShow = (props) => {
                 </div>
                 <img src={movie.movieImageUrl} alt="movie-poster"></img>
             </div>
-            <ReviewList movieReviews={reviews}/>
+            <ReviewList movieReviews={reviews} />
+            <div className="review-form">
+                <MovieReviewForm movie={movie} movieId={movieId} />
+            </div>
         </div>
     )
 }

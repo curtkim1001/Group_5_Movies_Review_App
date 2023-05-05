@@ -8,7 +8,6 @@ const RegistrationForm = () => {
     password: "",
     passwordConfirmation: "",
     username: "",
-    admin: false
   });
 
   const [errors, setErrors] = useState({});
@@ -17,7 +16,7 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation, username, admin } = payload;
+    const { email, password, passwordConfirmation, username } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
 
@@ -101,20 +100,6 @@ const RegistrationForm = () => {
       ...userPayload,
       [event.currentTarget.name]: event.currentTarget.value,
     });
-    if (event.currentTarget.name === "admin") {
-      if (event.currentTarget.checked) {
-        setUserPayload({
-          ...userPayload,
-          [event.currentTarget.name]: true
-        });
-      }
-      else {
-        setUserPayload({
-          ...userPayload,
-          [event.currentTarget.name]: false,
-        });
-      }
-    }
   };
 
   if (shouldRedirect) {

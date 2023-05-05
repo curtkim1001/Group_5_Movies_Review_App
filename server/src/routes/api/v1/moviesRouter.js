@@ -1,7 +1,12 @@
 import express from "express"
 import objection from "objection"
-import { Movie } from "../../../models/index.js"
+import { Movie, Review, User } from "../../../models/index.js"
+import movieReviewsRouter from "./movieReviewsRouter.js"
+import ReviewSerializer from "../../../serializers/ReviewSerializer.js"
+
 const moviesRouter = new express.Router()
+
+moviesRouter.use("/:movieId/reviews", movieReviewsRouter)
 
 moviesRouter.get("/", async (req, res) => {
     try {
@@ -17,9 +22,16 @@ moviesRouter.get("/:id", async (req, res) => {
     try {
         const movie = await Movie.query().findById(id)
         const reviews = await movie.$relatedQuery("reviews")
-        movie.reviews = reviews
+        const serializedReviews = await Promise.all(reviews.map(async review => {
+           return await ReviewSerializer.showDetails(review)
+        }
+        ))
+
+        movie.reviews = serializedReviews
+
         return res.status(200).json({ movie: movie })
     } catch (error) {
+        console.log(error)
         res.status(500).json({ errors: error })
     }
 })

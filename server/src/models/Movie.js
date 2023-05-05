@@ -29,7 +29,7 @@ class Movie extends Model {
         }
     }
     static get relationMappings(){
-        const { Review } = require("./index.js")
+        const { Review, User } = require("./index.js")
         return {
             reviews: {
                 relation: Model.HasManyRelation,
@@ -37,6 +37,18 @@ class Movie extends Model {
                 join: {
                     from: "movies.id",
                     to: "reviews.movieId"
+                }
+            },
+            users: {
+                relation: Model.ManyToManyRelation,
+                modelClass: User,
+                join: {
+                    from: "movies.id",
+                    through: {
+                        from: "reviews.movieId",
+                        to: "reviews.userId"
+                    },
+                    to: "users.id"
                 }
             }
         }
