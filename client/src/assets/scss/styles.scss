@@ -1,128 +1,147 @@
-$Primary-Color: #0A1828;
-$Text-Color: #BFA181;
-$Small-Text-Color: #869BA9;
-$Secondary-Color: #001F33E6;
-
-
-a {
-    color: turquoise;
-}
+$background: #9ba4b5;
+$headings: #212a3e;
+$buttons: #ffc2b4;
+$secondary-background: #394867;
+$complementary: #00000099;
 
 body {
-    background-color: $Primary-Color;
+  background-color: $background;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
 .movie-poster {
-    height: 148.15px;
-    min-width: 6em !important;
-    border: solid;
-    border-width: 3px;
-    border-color: $Text-Color
+  max-height: 150px;
+  min-width: 75px;
+  border: solid 3px $secondary-background;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: auto;
 }
 
-
 .border {
-    border-color: $Text-Color;
-    border-width: 2px;
-    background-color: $Secondary-Color;
-    margin-left: 5em;
-    margin-right: 5em;
+  border: solid 3px $secondary-background;
+  background-color: $headings;
+  margin-left: 5em;
+  margin-right: 5em;
 
-    h4 {
-        color: $Text-Color;
-        font-weight: bold;
+  h4 {
+    margin-left: 40px;
+    color: $background;
+    font-weight: bold;
+  }
 
-    }
-    
-    p {
-        color: $Small-Text-Color;
-    }
+  p {
+    margin-left: 40px;
+    color: $background;
+  }
 }
 
 .movie-list-title {
-    color: $Text-Color;
-    text-align: center;
-
+  color: $complementary;
+  text-align: center;
+  font-weight: bold;
 }
 
 .welcome-message {
-    color: $Text-Color;
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
+  color: $headings;
+  text-align: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .movie-show {
-    color: $Small-Text-Color;
-    display: block;
-    margin-bottom: 10px;
+  width: auto;
+  color: $headings;
+  display: block;
+  margin-bottom: 10px;
 
-    p {
-        margin-top: 20px;
-        color: $Small-Text-Color
-    }
+  p {
+    margin-top: 20px;
+    color: $background;
+  }
 
-    h2 {
-        color: $Text-Color;
-        text-align: center;
-    }
-
-    h4 {
-        color: $Text-Color;
-    }
-
-    img {
-        width: 400px;
-        height: 600px;
-    }
-}
-    .content {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-
-    .movie-content {
-        background-color: $Secondary-Color;
-        border-width: 2em;
-    }
-
-
-.logo{
-    display: block;
-    margin: auto;
-    width: 500px;
-    height: 500px;
-    border: solid;
-    border-color: $Text-Color;
-    border-width: 3px;
-    
-}
-
-.authors{
-    color: $Text-Color;
+  h2 {
+    color: $headings;
     text-align: center;
-    padding-top: 30px ;
+  }
+
+  h4 {
+    text-align: center;
+    color: $headings;
+  }
+
+  img {
+    display: block;
+    border: solid 3px $secondary-background;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: auto;
+    height: 600px;
+  }
+}
+.content {
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.center{
-    margin-left: auto;
-    margin-right:auto;
+.movie-content {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $headings;
+  border: solid 3px $secondary-background;
+}
+
+.logo {
+  display: block;
+  margin: auto;
+  width: 500px;
+  height: 500px;
+  border: solid 3px $headings;
+}
+
+.authors {
+  color: $headings;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-bar {
-    background-color: gray;
+  background-color: $headings;
 
-    ul {
-        background-color: gray;
-    }
+  ul {
+    background-color: $headings;
+  }
+  .menu-text {
+    color: $background;
+  }
+  a {
+    color: $background;
+  }
+  .button {
+    background-color: $complementary;
+    font-weight: bolder;
+  }
 }
 
-
 .cool {
-    background-color: white;
-    box-shadow: 10px 10px $Text-Color;
-    margin-left: 650px;
-    margin-right: 300px;
-    margin-top: 50px;
+  background-color: white;
+  box-shadow: 10px 10px $headings;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 50%;
 }
