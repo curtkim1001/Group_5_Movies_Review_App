@@ -4,10 +4,8 @@ import MovieReviewForm from "./MovieReviewForm.js"
 import { useParams } from 'react-router-dom';
 
 const MovieShow = (props) => {
-
-    // let reviewForm
-    const movieId = useParams()
-    // const movieId = props.match.params.id
+    let visibleReviewFormComponent
+    const { id } = useParams()
 
     const [movie, setMovie] = useState({
         title: "",
@@ -22,7 +20,7 @@ const MovieShow = (props) => {
     const getMovie = async () => {
         
         try {
-            const response = await fetch(`/api/v1/movies/${movieId}`)
+            const response = await fetch(`/api/v1/movies/${id}`)
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
@@ -42,11 +40,10 @@ const MovieShow = (props) => {
     }, [])
 
     if (props.user) {
-
+        visibleReviewFormComponent=<MovieReviewForm movie={movie} movieId={id} />
     } else {
-
+        visibleReviewFormComponent=null
     }
-    debugger
 
 
     return (
@@ -63,7 +60,7 @@ const MovieShow = (props) => {
             </div>
             <ReviewList movieReviews={reviews} />
             <div className="review-form">
-                <MovieReviewForm movie={movie} movieId={movieId} />
+                {visibleReviewFormComponent}
             </div>
         </div>
     )

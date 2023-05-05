@@ -1,5 +1,7 @@
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
+import translateServerErrors from "../../services/translateServerErrors.js";  
+import ErrorList from "./ErrorList.js"
 
 const MovieReviewForm = ({ movie, movieId }) => {
 
@@ -84,6 +86,7 @@ const MovieReviewForm = ({ movie, movieId }) => {
   return (
     <div className="callout">
       <h1>Submit a review for {movie.title}</h1>
+      <ErrorList errors={errors}/>
       <form onSubmit={handleSubmit} >
         <label>
           Content:

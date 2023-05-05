@@ -26,7 +26,6 @@ moviesRouter.get("/:id", async (req, res) => {
            return await ReviewSerializer.showDetails(review)
         }
         ))
-
         movie.reviews = serializedReviews
 
         return res.status(200).json({ movie: movie })

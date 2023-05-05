@@ -6,11 +6,9 @@ class ReviewSerializer {
         for (const attribute of allowedAttributes) {
             serializedReview[attribute] = review[attribute]
         }
-        console.log(serializedReview)
         const relatedUser = await review.$relatedQuery("User")
         serializedReview.user = relatedUser
-
-        console.log(serializedReview)
+        
        return serializedReview
     }
 }
