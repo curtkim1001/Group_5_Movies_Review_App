@@ -17,11 +17,7 @@ const ReviewList = (props) => {
         )
     })
 
-    return (
-        <>
-            {allReviewsArray}
-        </>
-    )
-}
+  return <>{allReviewsArray}</>;
+};
 
-export default ReviewList
+export default ReviewList;
