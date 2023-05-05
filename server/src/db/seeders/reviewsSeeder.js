@@ -19,6 +19,4 @@ class ReviewsSeeder {
     }
 }
 
-
-
 export default ReviewsSeeder
