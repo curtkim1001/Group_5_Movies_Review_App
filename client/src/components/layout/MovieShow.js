@@ -7,7 +7,6 @@ const MovieShow = (props) => {
         genre: "",
         synopsis: "",
         movieImageUrl: "",
-        
     })
     const [reviews, setReviews] = useState([])
 
