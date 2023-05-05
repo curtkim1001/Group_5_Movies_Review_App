@@ -55,9 +55,3 @@ yarn run dev
 - Clicking the movies lets you see its details and submit a review if you are a registered user
 
 - You can leave a comment under a review
-
-## Technologies in the project here:
-
-- Technology1
-
-- Technology2
