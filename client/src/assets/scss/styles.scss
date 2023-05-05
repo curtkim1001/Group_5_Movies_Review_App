@@ -8,12 +8,6 @@ body {
   background-color: $background;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 20px;
-}
-
 .movie-poster {
   max-height: 150px;
   min-width: 75px;
