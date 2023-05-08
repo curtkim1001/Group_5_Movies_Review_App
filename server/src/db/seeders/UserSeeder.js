@@ -4,16 +4,16 @@ class UserSeeder {
     static async seed() {
         const userData = [
             {
-            username: "launchacademy1",
-            email:"launchacademy@gmail.com",
-            password: "launch",
-            admin: false
+                username: "launchacademy1",
+                email:"launchacademy@gmail.com",
+                password: "launch",
+                admin: false
             }, 
             {
-            username: "curtkim1",
-            email:"curtkim@email.com",
-            password:"12345",
-            admin: true
+                username: "curtkim1",
+                email:"curtkim@email.com",
+                password:"12345",
+                admin: true
             }
         ]
         
