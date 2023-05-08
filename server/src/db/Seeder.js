@@ -4,6 +4,7 @@ import User from "../models/User.js"
 import MoviesSeeder from "./seeders/MoviesSeeder.js"
 import ReviewsSeeder from "./seeders/reviewsSeeder.js"
 import UserSeeder from "./seeders/userSeeder.js"
+
 class Seeder {
   static async seed() {
     // include individual seed commands here

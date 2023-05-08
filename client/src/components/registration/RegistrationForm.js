@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     email: "",
     password: "",
     passwordConfirmation: "",
+    username: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -15,7 +16,7 @@ const RegistrationForm = () => {
 
   const validateInput = (payload) => {
     setErrors({});
-    const { email, password, passwordConfirmation } = payload;
+    const { email, password, passwordConfirmation, username } = payload;
     const emailRegexp = config.validation.email.regexp;
     let newErrors = {};
 
@@ -24,6 +25,20 @@ const RegistrationForm = () => {
         ...newErrors,
         email: "is invalid",
       };
+    }
+
+    if (username.trim() == "") {
+      newErrors = {
+        ...newErrors,
+        username: "is required"
+      }
+    }
+
+    if (username.length < 5) {
+      newErrors = {
+        ...newErrors,
+        username: "must be at least 5 characters long"
+      }
     }
 
     if (password.trim() == "") {
@@ -109,6 +124,17 @@ const RegistrationForm = () => {
 
         <div className="grid-x">
           <div className="center small-4">
+
+          <label className="welcome-message">
+            Username
+            <input type="text" name="username" placeholder="username" value={userPayload.username} onChange={onInputChange} />
+            <FormError error={errors.username} />
+          </label>
+          </div>
+        </div>
+
+        <div className="grid-x">
+          <div className="center small-4">
           <label className="welcome-message">
             Password
             <input
@@ -139,6 +165,7 @@ const RegistrationForm = () => {
           </label>
           </div>
         </div>
+
         <div>
           <input type="submit" className="button" value="Register" />
         </div>

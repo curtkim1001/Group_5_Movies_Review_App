@@ -3,7 +3,10 @@ import config from "../../config";
 import FormError from "../layout/FormError";
 
 const SignInForm = () => {
-  const [userPayload, setUserPayload] = useState({ email: "", password: "" });
+  const [userPayload, setUserPayload] = useState({ 
+    email: "", 
+    password: ""
+  });
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
 
@@ -86,21 +89,21 @@ const SignInForm = () => {
         </div>
 
         <div className="grid-x">
-            <div className="center small-4">
-
-          <label className="welcome-message">
-            Password
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={userPayload.password}
-              onChange={onInputChange}
-              />
-            <FormError error={errors.password} />
-          </label>
-              </div>
+          <div className="center small-4">
+            <label className="welcome-message">
+              Password
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={userPayload.password}
+                onChange={onInputChange}
+                />
+              <FormError error={errors.password} />
+            </label>
+          </div>
         </div>
+        
         <div>
           <input type="submit" className="button" value="Sign In" />
         </div>

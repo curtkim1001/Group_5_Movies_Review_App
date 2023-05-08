@@ -14,31 +14,33 @@ Curt Kim, Solomon Montagno, Jose Estrada
 git clone https://github.com/dhk2431/Group_5_Movies_Review_App
 ```
 
-### Install the dependencies:
+### For development in challenges:
 
-```
-cd Group_5_Movies_Review_App
+cd movies-review-app
 yarn install
-```
+yarn run dev
 
-## Usage
+### Instructions for other developers:
 
-### To run the server:
+Clone the project files from github using
+git clone https://github.com/dhk2431/Group_5_Movies_Review_App.git
 
-```
-yarn dev
-```
+Once user designates file location in terminal,
+cd server
 
-### To make the database:
-
-```
+Create a new database called “movies-review-app_development”
 createdb movies-review-app_development
-createdb movies-review-app_test
-createdb movies-review-app_e2e
 
-yarn migrate:make movies
-yarn migrate:latest
-```
+yarn install
+
+Make sure to migrate the table to the database
+yarn run migrate:latest
+
+Seed the database
+yarn db:seed
+
+Start up server
+yarn run dev
 
 ## [Text for the link here](URL here!)
 
@@ -53,9 +55,3 @@ yarn migrate:latest
 - Clicking the movies lets you see its details and submit a review if you are a registered user
 
 - You can leave a comment under a review
-
-## Technologies in the project here:
-
-- Technology1
-
-- Technology2
