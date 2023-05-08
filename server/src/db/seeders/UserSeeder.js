@@ -20,7 +20,6 @@ class UserSeeder {
         for (const singleUser of userData) {
             const currentUser = await User.query().findOne({ email: singleUser.email })
             if (!currentUser) {
-                // singleUser.cryptedPassword = await Bcrypt.hashSync(singleUser.cryptedPassword, 10);
                 await User.query().insert(singleUser)
             }
         }
