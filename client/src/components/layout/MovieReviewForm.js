@@ -1,9 +1,10 @@
+import { checkPropTypes } from "prop-types";
 import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import translateServerErrors from "../../services/translateServerErrors.js";  
 import ErrorList from "./ErrorList.js"
 
-const MovieReviewForm = ({ movie, movieId }) => {
+const MovieReviewForm = ({ movie, movieId, reviews, setReviews }) => {
 
   const [newReview, setNewReview] = useState({
     content:"",
@@ -11,7 +12,6 @@ const MovieReviewForm = ({ movie, movieId }) => {
     spoilerWarning: false
   })
   const [errors, setErrors] = useState([])
-  const [redirect, setRedirect] = useState(false)
 
   const postReview = async (newReviewData) => {
     try {
@@ -35,7 +35,7 @@ const MovieReviewForm = ({ movie, movieId }) => {
       } else {
         const responseBody = await response.json()
         setErrors([])
-        setRedirect(true)
+        setReviews([...reviews, responseBody.review])
       }
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`)
@@ -43,7 +43,6 @@ const MovieReviewForm = ({ movie, movieId }) => {
   }
 
   const handleInputChange = event => {
-    
     setNewReview({
       ...newReview,
       [event.currentTarget.name]: event.currentTarget.value
@@ -77,11 +76,6 @@ const MovieReviewForm = ({ movie, movieId }) => {
       spoilerWarning: false
     })
   }
-
-  if(redirect) {
-    return <Redirect to={{pathname:`/movies/${movieId}`}}/>
-  }
-
   
   return (
     <div className="callout">

@@ -30,7 +30,6 @@ moviesRouter.get("/:id", async (req, res) => {
 
         return res.status(200).json({ movie: movie })
     } catch (error) {
-        console.log(error)
         res.status(500).json({ errors: error })
     }
 })

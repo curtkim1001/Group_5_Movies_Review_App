@@ -23,9 +23,7 @@ const TopBar = ({ user }) => {
 
   const authenticatedListItems = [
     <li key="username">
-      <button type="button" className="button" >
         Username: {username}
-      </button>
     </li>,
     <li key="sign-out">
       <SignOutButton />
