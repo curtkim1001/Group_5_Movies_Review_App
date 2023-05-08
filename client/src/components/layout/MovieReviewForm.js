@@ -111,7 +111,7 @@ const MovieReviewForm = ({ movie, movieId }) => {
         </label>
 
         <label>
-          Spoilers in Review
+          Spoilers in Review 
           <input
             type="checkbox"
             name="spoilerWarning"
