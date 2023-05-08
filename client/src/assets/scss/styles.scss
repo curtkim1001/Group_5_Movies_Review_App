@@ -124,6 +124,10 @@ body {
   a {
     color: $background;
   }
+  .username-button {
+    background-color: $complementary;
+    font-weight: 500;
+  }
   .button {
     background-color: $complementary;
     font-weight: bolder;
@@ -138,4 +142,14 @@ body {
   margin-top: 50px;
   margin-bottom: 50px;
   width: 50%;
+}
+
+.review-show {
+  background-color: $complementary;
+  border: solid 3px $black;
+  h4 {
+    color: $background;
+    text-align: left;
+    font-size: medium;
+  }
 }

@@ -1,93 +1,89 @@
-import React, { useState } from "react"
-import { Redirect } from "react-router-dom"
-import translateServerErrors from "../../services/translateServerErrors.js";  
-import ErrorList from "./ErrorList.js"
+import React, { useState } from "react";
+import { Redirect } from "react-router-dom";
+import translateServerErrors from "../../services/translateServerErrors.js";
+import ErrorList from "./ErrorList.js";
 
 const MovieReviewForm = ({ movie, movieId }) => {
-
   const [newReview, setNewReview] = useState({
-    content:"",
-    rating:"",
-    spoilerWarning: false
-  })
-  const [errors, setErrors] = useState([])
-  const [redirect, setRedirect] = useState(false)
+    content: "",
+    rating: "",
+    spoilerWarning: false,
+  });
+  const [errors, setErrors] = useState([]);
+  const [redirect, setRedirect] = useState(false);
 
   const postReview = async (newReviewData) => {
     try {
       const response = await fetch(`/api/v1/movies/${movieId}/reviews`, {
         method: "POST",
         headers: new Headers({
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         }),
-        body: JSON.stringify(newReviewData)
-      })
+        body: JSON.stringify(newReviewData),
+      });
       if (!response.ok) {
         if (response.status === 422) {
-          const errorBody = await response.json()
-          const newErrors = translateServerErrors(errorBody.errors)
-          return setErrors(newErrors)
+          const errorBody = await response.json();
+          const newErrors = translateServerErrors(errorBody.errors);
+          return setErrors(newErrors);
         } else {
-          const errorMessage = `${response.status} (${response.statusText})`
-          const error = new Error(errorMessage)
-          throw error
+          const errorMessage = `${response.status} (${response.statusText})`;
+          const error = new Error(errorMessage);
+          throw error;
         }
       } else {
-        const responseBody = await response.json()
-        setErrors([])
-        setRedirect(true)
+        const responseBody = await response.json();
+        setErrors([]);
+        setRedirect(true);
       }
     } catch (error) {
-      console.error(`Error in fetch: ${error.message}`)
+      console.error(`Error in fetch: ${error.message}`);
     }
-  }
+  };
 
-  const handleInputChange = event => {
-    
+  const handleInputChange = (event) => {
     setNewReview({
       ...newReview,
-      [event.currentTarget.name]: event.currentTarget.value
-    })
+      [event.currentTarget.name]: event.currentTarget.value,
+    });
     if (event.currentTarget.name === "spoilerWarning") {
       if (event.currentTarget.checked) {
         setNewReview({
           ...newReview,
-          [event.currentTarget.name]: true
+          [event.currentTarget.name]: true,
         });
-      }
-      else {
+      } else {
         setNewReview({
           ...newReview,
           [event.currentTarget.name]: false,
         });
       }
     }
-  }
+  };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
-    postReview(newReview)
-    clearForm()
-  }
+    event.preventDefault();
+    postReview(newReview);
+    clearForm();
+  };
 
   const clearForm = () => {
     setNewReview({
-      content:"",
-      rating:"",
-      spoilerWarning: false
-    })
+      content: "",
+      rating: "",
+      spoilerWarning: false,
+    });
+  };
+
+  if (redirect) {
+    return <Redirect to={{ pathname: `/movies/${movieId}` }} />;
   }
 
-  if(redirect) {
-    return <Redirect to={{pathname:`/movies/${movieId}`}}/>
-  }
-
-  
   return (
     <div className="callout">
       <h1>Submit a review for {movie.title}</h1>
-      <ErrorList errors={errors}/>
-      <form onSubmit={handleSubmit} >
+      <ErrorList errors={errors} />
+      <form onSubmit={handleSubmit}>
         <label>
           Content:
           <input
@@ -111,7 +107,7 @@ const MovieReviewForm = ({ movie, movieId }) => {
         </label>
 
         <label>
-          Spoilers in Review 
+          Spoilers in Review
           <input
             type="checkbox"
             name="spoilerWarning"
@@ -125,7 +121,7 @@ const MovieReviewForm = ({ movie, movieId }) => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default MovieReviewForm
+export default MovieReviewForm;

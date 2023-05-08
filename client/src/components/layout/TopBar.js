@@ -1,13 +1,13 @@
 import React from "react";
-import { Link, useRouteMatch } from "react-router-dom";
+import { Link, Redirect, useRouteMatch } from "react-router-dom";
 import SignOutButton from "../authentication/SignOutButton";
 
 const TopBar = ({ user }) => {
-  let username
+  let username;
   if (user) {
-    username = user.username
+    username = user.username;
   } else {
-    username = "User Name"
+    username = "User Name";
   }
 
   const unauthenticatedListItems = [
@@ -22,10 +22,8 @@ const TopBar = ({ user }) => {
   ];
 
   const authenticatedListItems = [
-    <li key="username">
-      <button type="button" className="button" >
-        Username: {username}
-      </button>
+    <li class="username-button" key="username">
+      <Link to="/profile">Username: {username}</Link>
     </li>,
     <li key="sign-out">
       <SignOutButton />
