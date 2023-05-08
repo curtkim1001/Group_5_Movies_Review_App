@@ -1,6 +1,6 @@
 class ReviewSerializer {
     static async showDetails(review) {
-        const allowedAttributes = ["id", "content", "rating", "spoilerWarning", "movieId", "userId"]
+        const allowedAttributes = ["id", "content", "rating", "spoilerWarning"]
 
         const serializedReview = {}
         for (const attribute of allowedAttributes) {

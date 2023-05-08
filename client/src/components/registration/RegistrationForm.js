@@ -127,7 +127,7 @@ const RegistrationForm = () => {
 
           <label className="welcome-message">
             Username
-            <input type="text" name="username" placeholder="username or user ID" value={userPayload.username} onChange={onInputChange} />
+            <input type="text" name="username" placeholder="username" value={userPayload.username} onChange={onInputChange} />
             <FormError error={errors.username} />
           </label>
           </div>

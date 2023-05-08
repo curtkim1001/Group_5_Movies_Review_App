@@ -28,7 +28,6 @@ const MovieShow = (props) => {
             }
             const movieData = await response.json()
             setMovie(movieData.movie)
-            
             setReviews(movieData.movie.reviews)
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -40,7 +39,7 @@ const MovieShow = (props) => {
     }, [])
 
     if (props.user) {
-        visibleReviewFormComponent=<MovieReviewForm movie={movie} movieId={id} />
+        visibleReviewFormComponent=<MovieReviewForm movie={movie} movieId={id} reviews={reviews} setReviews={setReviews}/>
     } else {
         visibleReviewFormComponent=null
     }
