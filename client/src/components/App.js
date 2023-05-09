@@ -6,24 +6,26 @@ import "../assets/scss/main.scss";
 import RegistrationForm from "./registration/RegistrationForm";
 import SignInForm from "./authentication/SignInForm";
 import TopBar from "./layout/TopBar";
-import MovieList from "./layout/MovieList.js"
+import MovieList from "./layout/MovieList.js";
 import WelcomeMessage from "./layout/WelcomeMessage.js";
-import MovieShow from "./layout/MovieShow.js"
+import MovieShow from "./layout/MovieShow.js";
+import AuthenticatedRoute from "./authentication/AuthenticatedRoute.js";
+import UserProfile from "./layout/UserProfile.js";
 
 const App = (props) => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const fetchCurrentUser = async () => {
     try {
-      const user = await getCurrentUser()
-      setCurrentUser(user)
+      const user = await getCurrentUser();
+      setCurrentUser(user);
     } catch (err) {
-      setCurrentUser(null)
+      setCurrentUser(null);
     }
-  }
+  };
 
   useEffect(() => {
-    fetchCurrentUser()
-  }, [])
+    fetchCurrentUser();
+  }, []);
 
   return (
     <Router>
@@ -36,6 +38,7 @@ const App = (props) => {
         <Route exact path="/movies/:id">
           <MovieShow user={currentUser} />
         </Route>
+        <AuthenticatedRoute exact path="/profile" component={UserProfile} user={currentUser} />
       </Switch>
     </Router>
   );
