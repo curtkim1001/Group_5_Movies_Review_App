@@ -5,7 +5,7 @@ const UserProfile = ({ user }) => {
 
   const getReviews = async () => {
     try {
-      const response = await fetch(`/api/v1/reviews/${user.id}`);
+      const response = await fetch(`/api/v1/reviews`);
       if (!response.ok) {
         const errorMessage = `${response.status} (${response.statusText})`;
         const error = new Error(errorMessage);
@@ -24,9 +24,7 @@ const UserProfile = ({ user }) => {
 
   const reviewsArray = userReviews.map((review) => {
     return (
-      <div key={review.id}>
-        <p>{review.content}</p>
-      </div>
+        <p key={review.id}>{review.content}</p>
     );
   });
   return (

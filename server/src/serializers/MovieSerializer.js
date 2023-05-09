@@ -9,11 +9,8 @@ class MovieSerializer {
       serializedMovie[attribute] = movie[attribute];
     }
     const reviews = await movie.$relatedQuery("reviews");
-    const serializedReviews = await Promise.all(
-      reviews.map(async (review) => {
-        return await ReviewSerializer.showDetails(review);
-      })
-    );
+    const serializedReviews = await ReviewSerializer.showDetails(reviews);
+      
     serializedMovie.reviews = serializedReviews;
     return serializedMovie;
   }

@@ -21,10 +21,8 @@ movieReviewsRouter.post("/", async (req, res) => {
       movieId,
       userId,
     });
-
-    const relatedUser = await newReview.$relatedQuery("User");
-    newReview.user = relatedUser;
-    return res.status(201).json({ review: newReview });
+    const serializedReview = await ReviewSerializer.singleShowDetails(newReview)
+    return res.status(201).json({ review: serializedReview });
   } catch (error) {
     if (error instanceof ValidationError) {
       res.status(422).json({ errors: error.data });
