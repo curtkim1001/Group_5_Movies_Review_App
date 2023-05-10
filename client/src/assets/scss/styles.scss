@@ -155,3 +155,33 @@ body {
     font-size: medium;
   }
 }
+
+
+.review-box {
+  border: solid 3px $secondary-background;
+  background-color: $headings;
+  margin-left: 5em;
+  margin-right: 5em;
+  
+  h4 {
+    margin-left: 40px;
+    color: $background;
+    font-weight: bold;
+  }
+  
+  p {
+    margin-left: 40px;
+    color: $background;
+  }
+}
+
+.liked {svg[data-icon="thumbs-up"] {
+  path {
+    fill: red; // Set the desired color here
+  }
+}}
+
+
+.disliked {
+  color: red;
+}
