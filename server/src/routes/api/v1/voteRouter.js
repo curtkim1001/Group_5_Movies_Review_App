@@ -6,7 +6,7 @@ const voteRouter = new express.Router();
 
 voteRouter.get("/", async (req, res) => {
     try {
-        const votes = await Vote.query().findOne({reviewId: })
+        const votes = await Vote.query()
         let voteTotal = 0
         votes.forEach((vote) => {
             voteTotal += vote.votes
