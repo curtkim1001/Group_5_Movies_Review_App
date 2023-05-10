@@ -3,6 +3,7 @@ import objection from "objection"
 import { Movie, Review, User } from "../../../models/index.js"
 import movieReviewsRouter from "./movieReviewsRouter.js"
 import ReviewSerializer from "../../../serializers/ReviewSerializer.js"
+import MovieSerializer from "../../../serializers/MovieSerializer.js"
 
 const moviesRouter = new express.Router()
 
@@ -13,6 +14,7 @@ moviesRouter.get("/", async (req, res) => {
         const movies = await Movie.query()
         res.status(200).json({ movies })
     } catch (error) {
+        
         res.status(500).json({ errors: error.message })
     }
 })
@@ -21,15 +23,10 @@ moviesRouter.get("/:id", async (req, res) => {
     const { id } = req.params
     try {
         const movie = await Movie.query().findById(id)
-        const reviews = await movie.$relatedQuery("reviews")
-        const serializedReviews = await Promise.all(reviews.map(async review => {
-           return await ReviewSerializer.showDetails(review)
-        }
-        ))
-        movie.reviews = serializedReviews
-
-        return res.status(200).json({ movie: movie })
+        const serializedMovie = await MovieSerializer.getSummary(movie)
+        return res.status(200).json({ movie: serializedMovie })
     } catch (error) {
+        console.log(error.message)
         res.status(500).json({ errors: error })
     }
 })

@@ -9,8 +9,9 @@ const MovieReviewForm = ({ movie, movieId, reviews, setReviews }) => {
   const [newReview, setNewReview] = useState({
     content:"",
     rating:"",
-    spoilerWarning: false
+    spoilerWarning: false,
   })
+
   const [errors, setErrors] = useState([])
 
   const postReview = async (newReviewData) => {
