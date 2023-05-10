@@ -28,8 +28,6 @@ usersRouter.get("/image", async (req, res) => {
   }
 })
 
-// The setup and implementation for this endpoint will be explained in a different article! 
-
 usersRouter.post("/image", uploadImage.single("image"), async (req, res) => {
   try {
     const { body } = req

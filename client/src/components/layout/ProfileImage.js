@@ -37,10 +37,6 @@ const ProfileImage = (props) => {
     event.preventDefault()
     const newPhotoBody = new FormData()
     newPhotoBody.append("image", newPhotoFormData.image)
-    // formData is a special JS object. If we use the entries method on it, we can see our data after file upload
-    // for (let pair of newMemeBody.entries()) {
-    //   console.log(pair[0] + ', ' + pair[1]);
-    // }
     
     try {
       const response = await fetch("/api/v1/users/image", {
