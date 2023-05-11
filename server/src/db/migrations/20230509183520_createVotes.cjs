@@ -18,7 +18,7 @@ exports.up = async (knex) => {
             .references("reviews.id")
             .index()
             .notNullable()
-        table.integer("votes")
+        table.integer("voteValue")
         table.timestamp("createdAt")
             .notNullable()
             .defaultTo(knex.fn.now())

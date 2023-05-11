@@ -14,7 +14,6 @@ moviesRouter.get("/", async (req, res) => {
         const movies = await Movie.query()
         res.status(200).json({ movies })
     } catch (error) {
-
         res.status(500).json({ errors: error.message })
     }
 })
@@ -26,7 +25,6 @@ moviesRouter.get("/:id", async (req, res) => {
         const serializedMovie = await MovieSerializer.getSummary(movie, req.user)
         return res.status(200).json({ movie: serializedMovie })
     } catch (error) {
-        console.log(error.message)
         res.status(500).json({ errors: error })
     }
 })

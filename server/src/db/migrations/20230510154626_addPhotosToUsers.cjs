@@ -10,7 +10,6 @@ exports.up = async (knex) => {
         table.string("imageUrl")
     })
 }
-
 /**
  * @param {Knex} knex
  */

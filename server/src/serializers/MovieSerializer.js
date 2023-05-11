@@ -9,7 +9,7 @@ class MovieSerializer {
       serializedMovie[attribute] = movie[attribute];
     }
     const reviews = await movie.$relatedQuery("reviews");
-    const serializedReviews = await ReviewSerializer.showDetails(reviews, currentUser);
+    const serializedReviews = await ReviewSerializer.showDetails(reviews);
 
     serializedMovie.reviews = serializedReviews;
     return serializedMovie;

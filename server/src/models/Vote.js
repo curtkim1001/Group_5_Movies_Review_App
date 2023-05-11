@@ -8,7 +8,7 @@ class Vote extends Model {
     static get jsonSchema(){
         return {
             type: "object",
-            required: ["votes"],
+            required: ["voteValue"],
             properties: {
                 votes: {type: ["string", "integer"]}
             }

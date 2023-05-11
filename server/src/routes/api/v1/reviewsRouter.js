@@ -10,15 +10,12 @@ reviewsRouter.get("/", async (req, res) => {
         const userId = req.user.id
         const findUser = await User.query().findById(userId)
         const relatedReviews = await findUser.$relatedQuery("reviews")
-        const serializedReviews = await ReviewSerializer.showDetails(relatedReviews, user)
+        const serializedReviews = await ReviewSerializer.showDetails(relatedReviews)
 
         return res.status(200).json({ reviews: serializedReviews });
     } catch (error) {
-        console.log(error.message)
         res.status(500).json({ errors: error.message });
     }
 });
-
-
 
 export default reviewsRouter;

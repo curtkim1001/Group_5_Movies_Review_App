@@ -44,7 +44,6 @@ const MovieShow = (props) => {
         visibleReviewFormComponent = null
     }
 
-
     return (
         <div className="movie-show grid-container grid-x">
             <h2>Movie Show Page</h2>
