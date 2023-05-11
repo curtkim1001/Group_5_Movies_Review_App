@@ -22,7 +22,7 @@ moviesRouter.get("/:id", async (req, res) => {
     const { id } = req.params
     try {
         const movie = await Movie.query().findById(id)
-        const serializedMovie = await MovieSerializer.getSummary(movie)
+        const serializedMovie = await MovieSerializer.getSummary(movie, req.user)
         return res.status(200).json({ movie: serializedMovie })
     } catch (error) {
         res.status(500).json({ errors: error })

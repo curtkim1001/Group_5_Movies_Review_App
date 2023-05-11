@@ -14,7 +14,6 @@ usersRouter.post("/", async (req, res) => {
       return res.status(201).json({ user: persistedUser });
     });
   } catch (error) {
-    console.log(error);
     return res.status(422).json({ errors: error });
   }
 });
@@ -35,12 +34,10 @@ usersRouter.post("/image", uploadImage.single("image"), async (req, res) => {
       ...body,
       image: req.file.location,
     }
-    console.log("i'm here"+req.user.id)
     const user = await User.query().findById(req.user.id)
     await user.$query().patch({ imageUrl: req.file.location })
     return res.status(201).json({ photo: user.imageUrl })
   } catch (error) {
-    console.log(error.message)
     return res.status(500).json({ errors: error })
   }
 })

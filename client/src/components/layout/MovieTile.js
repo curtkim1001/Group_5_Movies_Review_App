@@ -6,7 +6,7 @@ const MovieTile = ({ movie }) => {
     <>
       <Link to={`/movies/${movie.id}`}>
         <div className="grid-x grid-margin-x callout border">
-          <div className="cell medium-3">
+          <div className="cell secondary cell medium-3">
             <img className="movie-poster" src={movie.movieImageUrl} alt="movie-posters"></img>
           </div>
           <div className="medium-9">

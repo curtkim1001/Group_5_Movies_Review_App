@@ -8,28 +8,28 @@ const { ValidationError } = objection;
 const movieReviewsRouter = new express.Router({ mergeParams: true });
 
 movieReviewsRouter.post("/", async (req, res) => {
-  const { body } = req;
-  const formInput = cleanUserInput(body);
-  const { content, rating, spoilerWarning } = formInput;
-  const userId = req.user.id;
-  const { movieId } = req.params;
-  try {
-    const newReview = await Review.query().insertAndFetch({
-      content,
-      rating,
-      spoilerWarning,
-      movieId,
-      userId,
-    });
-    const serializedReview = await ReviewSerializer.singleShowDetails(newReview)
-    return res.status(201).json({ review: serializedReview });
-  } catch (error) {
-    if (error instanceof ValidationError) {
-      res.status(422).json({ errors: error.data });
-    } else {
-      res.status(500).json({ errors: error.message });
+    const { body } = req;
+    const formInput = cleanUserInput(body);
+    const { content, rating, spoilerWarning } = formInput;
+    const userId = req.user.id;
+    const { movieId } = req.params;
+    try {
+        const newReview = await Review.query().insertAndFetch({
+            content,
+            rating,
+            spoilerWarning,
+            movieId,
+            userId,
+        });
+        const serializedReview = await ReviewSerializer.singleShowDetails(newReview)
+        return res.status(201).json({ review: serializedReview });
+    } catch (error) {
+        if (error instanceof ValidationError) {
+            res.status(422).json({ errors: error.data });
+        } else {
+            res.status(500).json({ errors: error.message });
+        }
     }
-  }
 });
 
 export default movieReviewsRouter;
