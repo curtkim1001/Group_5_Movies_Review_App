@@ -5,30 +5,30 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
 const ReviewTile = props => {
+
     const [errors, setErrors] = useState([])
     const [newVote, setNewVote] = useState(0)
     const [voted, setVoted] = useState(false)
-    const [votesTotal, setVotesTotal] = useState(0)
-    // const [currentReview, setCurrentReview] = useState(null)
+    const [voteTotal, setVoteTotal] = useState(props.review.votes)
 
     let upVotedClassName = ""
     let downVotedClassName = ""
-    let currentVoteCount
     if (newVote === 1) {
         upVotedClassName = "liked"
     }
 
     const getVotes = async () => {
         try {
-            const response = await fetch(`/api/v1/votes`)
+            const response = await fetch(`/api/v1/movies/${props.movieId}`)
             if (!response.ok) {
                 const errorMessage = `${response.status} (${response.statusText})`
                 const error = new Error(errorMessage)
                 throw error
             }
             const votesData = await response.json()
-            currentVoteCount = votesData.voteValue
-            setVotesTotal(votesData.voteValue)
+            debugger    
+            // setVoteTotal(votesData.total)
+
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
         }
@@ -117,7 +117,7 @@ const ReviewTile = props => {
             <p>Username is: {props.review.user.username}</p>
             <h4>{props.review.content}</h4>
             <p>Rating: {props.review.rating}</p>
-            <p>Total votes: {votesTotal}</p>
+            <p>Total votes: {voteTotal}</p>
             <div >
                 <p onClick={() => handleUpVote(props.review.id)} ><FontAwesomeIcon disabled={voted} icon={faThumbsUp} className={upVotedClassName} /></p>
             </div>

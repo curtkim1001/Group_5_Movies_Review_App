@@ -1,6 +1,6 @@
 class ReviewSerializer {
     static async showDetails(reviews, currentUser) {
-        const allowedAttributes = ["id", "content", "rating", "spoilerWarning"]
+        const allowedAttributes = ["id", "content", "rating", "spoilerWarning",]
 
         const serializedReviews = await Promise.all(reviews.map(async (review) => {
             const serializedSingleReview = {}
@@ -10,15 +10,30 @@ class ReviewSerializer {
             const relatedUser = await review.$relatedQuery("user")
             serializedSingleReview.user = relatedUser
 
-
             const relatedVotes = await review.$relatedQuery("votes")
+            let voteTotal = 0
+            relatedVotes.forEach((vote) => {
+                voteTotal += vote.votes
+            })
+            serializedSingleReview.votes = voteTotal
 
-            // we dont bneed this 
-            // serializedSingleReview.votes = relatedVotes
 
-            // instead, iterate over related votes and get the vote total
-            // and write logic to determine if the current user has voted on this review
-            // if no current user, then just say they didnt vote
+
+            // if (currentUser) {
+            //     let votesArray = []
+            //     const userVote = relatedVotes.forEach(vote => {
+            //         if (vote.userId === currentUser.id) {
+            //             votesArray.push(vote)
+            //         }
+            //     })
+            //     let voteTotal = 0
+            //     votesArray.forEach((vote) => {
+            //         voteTotal += vote.votes
+            //     })
+            //     serializedSingleReview.votes = voteTotal
+            // } else {
+            //     serializedSingleReview.votes = null
+            // }
             return serializedSingleReview
         }))
 

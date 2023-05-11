@@ -6,7 +6,7 @@
  * @param {Knex} knex
  */
 exports.up = async (knex) => {
-    return knex.schema.createTable("votes", (table)=>{
+    return knex.schema.createTable("votes", (table) => {
         table.bigIncrements("id")
         table.bigInteger("userId")
             .unsigned()

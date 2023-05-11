@@ -39,8 +39,8 @@ class Review extends Model {
                 relation: Model.HasManyRelation,
                 modelClass: Vote,
                 join: {
-                from: "reviews.voteId",
-                to: "votes.id"
+                    from: "reviews.id",
+                    to: "votes.reviewId"
                 }
             }
         }

@@ -4,19 +4,16 @@ import { ValidationError } from "objection";
 
 const voteRouter = new express.Router();
 
-voteRouter.get("/", async (req, res) => {
-    try {
-        const votes = await Vote.query()
-        let voteTotal = 0
-        votes.forEach((vote) => {
-            voteTotal += vote.votes
-        })
-        res.status(200).json({ voteValue: voteTotal })
-    } catch (error) {
+// voteRouter.get("/", async (req, res) => {
+//     const currentUser = req.user
+//     try {
+//         const votes = await Vote.query()
+//         res.status(200).json({ voteValue: voteTotal })
+//     } catch (error) {
 
-        res.status(500).json({ errors: error.message })
-    }
-})
+//         res.status(500).json({ errors: error.message })
+//     }
+// })
 
 voteRouter.post("/", async (req, res) => {
     console.log(`inside of post router`)
