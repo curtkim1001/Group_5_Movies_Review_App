@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import ProfileImage from "./ProfileImage.js";
+import Dropzone from "react-dropzone"
 
 const UserProfile = ({ user }) => {
   const [userReviews, setUserReviews] = useState([]);
@@ -30,9 +32,12 @@ const UserProfile = ({ user }) => {
   return (
     <div>
       <h2>Account Information:</h2>
-      <p>{user.username}</p>
-      <p>{user.email}</p>
-      <div className="callout review-show">{reviewsArray}</div>
+      <p>Username: {user.username}</p>
+      <p>Email: {user.email}</p>
+      <ProfileImage />
+      <div className="callout review-show">
+        <h3>User's Reviews</h3>
+        {reviewsArray}</div>
     </div>
   );
 };
