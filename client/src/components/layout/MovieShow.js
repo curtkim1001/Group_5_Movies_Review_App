@@ -12,13 +12,11 @@ const MovieShow = (props) => {
         year: "",
         genre: "",
         synopsis: "",
-        movieImageUrl: "",
-
+        movieImageUrl: ""
     })
     const [reviews, setReviews] = useState([])
 
     const getMovie = async () => {
-
         try {
             const response = await fetch(`/api/v1/movies/${id}`)
             if (!response.ok) {
@@ -44,7 +42,7 @@ const MovieShow = (props) => {
             movieId={id} 
             reviews={reviews} 
             setReviews={setReviews} 
-            />
+        />
     } else {
         visibleReviewFormComponent = null
     }
