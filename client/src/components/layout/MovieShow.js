@@ -39,7 +39,12 @@ const MovieShow = (props) => {
     }, [])
 
     if (props.user) {
-        visibleReviewFormComponent = <MovieReviewForm movie={movie} movieId={id} reviews={reviews} setReviews={setReviews} />
+        visibleReviewFormComponent = <MovieReviewForm 
+            movie={movie} 
+            movieId={id} 
+            reviews={reviews} 
+            setReviews={setReviews} 
+            />
     } else {
         visibleReviewFormComponent = null
     }

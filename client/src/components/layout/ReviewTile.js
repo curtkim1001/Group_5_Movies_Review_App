@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import translateServerErrors from "../../services/translateServerErrors.js";
-import ErrorList from "./ErrorList.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +8,7 @@ const ReviewTile = props => {
     const [errors, setErrors] = useState([])
     const [voteTotal, setVoteTotal] = useState(props.review.voteValue)
 
-    const handleVotes = async (voteValue, reviewId) => {
+    const handleVote = async (voteValue, reviewId) => {
         try {
             const response = await fetch(`/api/v1/votes`, {
                 method: "POST",
@@ -31,7 +30,7 @@ const ReviewTile = props => {
             } else {
                 const responseBody = await response.json()
                 setErrors(errors)
-                setVoteTotal(responseBody.review.voteValue)
+                setVoteTotal(responseBody.vote)
             }
         } catch (error) {
             console.error(`Error in fetch: ${error.message}`)
@@ -39,11 +38,11 @@ const ReviewTile = props => {
     }
 
     const handleUpVote = (reviewId) => {
-        handleVotes(1, reviewId)
+        handleVote(1, reviewId)
     };
 
     const handleDownVote = (reviewId) => {
-        handleVotes(-1, reviewId)
+        handleVote(-1, reviewId)
     };
 
     let message = ""

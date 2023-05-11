@@ -6,10 +6,8 @@ const reviewsRouter = new express.Router();
 
 reviewsRouter.get("/", async (req, res) => {
     try {
-        const user = req.user
-        const userId = req.user.id
-        const findUser = await User.query().findById(userId)
-        const relatedReviews = await findUser.$relatedQuery("reviews")
+        const currentUser = req.user
+        const relatedReviews = await currentUser.$relatedQuery("reviews")
         const serializedReviews = await ReviewSerializer.showDetails(relatedReviews)
 
         return res.status(200).json({ reviews: serializedReviews });

@@ -25,10 +25,8 @@ exports.up = async (knex) => {
         table.timestamp("updatedAt")
             .notNullable()
             .defaultTo(knex.fn.now())
-
     })
 }
-
 /**
  * @param {Knex} knex
  */
