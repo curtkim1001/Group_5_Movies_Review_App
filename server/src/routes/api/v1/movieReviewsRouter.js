@@ -32,4 +32,14 @@ movieReviewsRouter.post("/", async (req, res) => {
     }
 });
 
+movieReviewsRouter.delete("/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        await Review.query().deleteById(id)
+        res.status(200).json({ message: "Review was deleted by user" })
+    } catch (error) {
+        return res.status(500).json({ errors: error })
+    }
+})
+
 export default movieReviewsRouter;

@@ -32,16 +32,26 @@ const MovieShow = (props) => {
         }
     }
 
+    const getAverageRating = () => {
+        let total = 0
+        let average = 0
+        reviews.forEach((review) => {
+            total += review.rating
+        })
+        average = total / (reviews.length)
+        return average.toFixed(2)
+    }
+
     useEffect(() => {
         getMovie()
     }, [])
 
     if (props.user) {
-        visibleReviewFormComponent = <MovieReviewForm 
-            movie={movie} 
-            movieId={id} 
-            reviews={reviews} 
-            setReviews={setReviews} 
+        visibleReviewFormComponent = <MovieReviewForm
+            movie={movie}
+            movieId={id}
+            reviews={reviews}
+            setReviews={setReviews}
         />
     } else {
         visibleReviewFormComponent = null
@@ -56,10 +66,11 @@ const MovieShow = (props) => {
                     <p>Release Year :{movie.year}</p>
                     <p>Genre :{movie.genre}</p>
                     <p>Description: {movie.synopsis}</p>
+                    <p>Average Rating: {getAverageRating()}</p>
                 </div>
                 <img src={movie.movieImageUrl} alt="movie-poster"></img>
             </div>
-            <ReviewList movieReviews={reviews} movieId={id}/>
+            <ReviewList movieReviews={reviews} user={props.user} movieId={id} />
             <div className="review-form">
                 {visibleReviewFormComponent}
             </div>

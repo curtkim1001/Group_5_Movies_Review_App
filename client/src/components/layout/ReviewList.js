@@ -8,7 +8,7 @@ const ReviewList = (props) => {
     const allReviewsArray = props.movieReviews.map(review => {
         return (
             <div key={review.id}>
-                <ReviewTile review={review} movieId={props.movieId} />
+                <ReviewTile review={review} user={props.user} movieId={props.movieId} />
             </div>
         )
     })
