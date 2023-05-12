@@ -236,6 +236,8 @@ body {
   }
   .button-group {
     .button {
+      margin-right: 10px;
+      margin-left: 10px;
       background-color: $complementary;
       color: $background;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);

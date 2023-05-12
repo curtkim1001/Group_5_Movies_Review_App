@@ -1,5 +1,5 @@
 import express from "express";
-import { User, Vote } from "../../../models/index.js";
+import { Review, User, Vote } from "../../../models/index.js";
 import ReviewSerializer from "../../../serializers/ReviewSerializer.js";
 
 const reviewsRouter = new express.Router();

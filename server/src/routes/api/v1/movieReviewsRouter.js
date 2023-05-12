@@ -42,4 +42,38 @@ movieReviewsRouter.delete("/:id", async (req, res) => {
     }
 })
 
+movieReviewsRouter.get("/:id", async (req, res) => {
+    const { id } = req.params
+    try {
+        const review = await Review.query().findById(id)
+        const serializedReview = await ReviewSerializer.singleShowDetails(review)
+        return res.status(200).json({ review: serializedReview });
+    } catch (error) {
+      res.status(500).json({ errors: error.message })
+    }
+  })
+
+movieReviewsRouter.patch("/:id/edit", async (req, res) => {
+    const { id } = req.params
+    try {
+        const { body } = req
+        const cleanedInput = cleanUserInput(body.review)
+
+        const allowedAttributes = ["content", "rating", "spoilerWarning"]
+        const serializedReview = {}
+        for (const attribute of allowedAttributes) {
+            serializedReview[attribute] = cleanedInput[attribute]
+        }
+
+        await Review.query().patchAndFetchById(id, serializedReview)
+        return res.status(200).json({ message: "Review successfully edited" })
+    } catch (err) {
+        if (err instanceof ValidationError) {
+            res.status(422).json({ errors: err.data })
+        } else {
+            res.status(500).json({ errors: err.message })
+        }
+    }
+})
+
 export default movieReviewsRouter;

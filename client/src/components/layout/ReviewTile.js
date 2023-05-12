@@ -5,9 +5,14 @@ import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
 import { Redirect } from "react-router-dom";
 
 const ReviewTile = props => {
+    let hideDelete
+    let hideEdit
     const [errors, setErrors] = useState([])
     const [voteTotal, setVoteTotal] = useState(props.review.voteValue)
     const [showDelete, setShowDelete] = useState(false)
+    const [editRedirect, setEditRedirect] = useState(false)
+
+
     const handleVote = async (voteValue, reviewId) => {
         try {
             const response = await fetch(`/api/v1/votes`, {
@@ -50,6 +55,7 @@ const ReviewTile = props => {
         message = "Spoiler Alert!"
     }
     const handleDeleteConfirmMessage = () => {
+        event.preventDefault()
         let confirmationDeleteMessage = window.confirm("Are you sure want to delete this review?")
         if (confirmationDeleteMessage) {
             deleteReview(props.review.id)
@@ -73,13 +79,25 @@ const ReviewTile = props => {
     if (showDelete) {
         return <Redirect push to={`/movies/${props.movieId}`} />
     }
-    let hideDelete = ""
 
-    if (props.review.user.id === props.user.id) {
-        hideDelete = <button className="button" onClick={handleDeleteConfirmMessage}>Delete Review</button>
-    } else {
-        if (props.review.user.id !== props.user.id) {
-            hideDelete = ""
+    const editReviewHandler = (event) => {
+        event.preventDefault()
+        setEditRedirect(true)
+    }
+
+    if (editRedirect) {
+        return <Redirect push to={`/movies/${props.movieId}/reviews/${props.review.id}/edit`} />
+    }
+
+    if(props.user) {
+        if (props.review.user.id === props.user.id) {
+            hideDelete = <button className="button" onClick={handleDeleteConfirmMessage} >Delete Review</button>
+            hideEdit = <button className="button" onClick={editReviewHandler} >Edit Review</button>
+        } else {
+            if (props.review.user.id !== props.user.id) {
+                hideDelete = ""
+                hideEdit = ""
+            }
         }
     }
 
@@ -100,6 +118,8 @@ const ReviewTile = props => {
             </p>
             <div>
                 {hideDelete}
+                <span style={{marginRight: "10px"}}></span>
+                {hideEdit}
             </div>
         </div>
     );
