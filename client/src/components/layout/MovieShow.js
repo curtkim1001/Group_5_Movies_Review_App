@@ -46,14 +46,15 @@ const MovieShow = (props) => {
 
   return (
     <div className="movie-show grid-container grid-x">
-      <h2>{movie.title}</h2>
+      <h2>Movie Show Page</h2>
       <div className="cell small-10 medium-8 large-8 content">
+        <h4>{movie.title}</h4>
         <div className="callout movie-content rounded-corner">
-          <p>Release Year: {movie.year}</p>
-          <p>Genre: {movie.genre}</p>
+          <p>Release Year :{movie.year}</p>
+          <p>Genre :{movie.genre}</p>
           <p>Description: {movie.synopsis}</p>
         </div>
-        <img className="rounded-corner" src={movie.movieImageUrl} alt="movie-poster"></img>
+        <img src={movie.movieImageUrl} alt="movie-poster"></img>
       </div>
       <ReviewList movieReviews={reviews} />
       <div className="review-form">{visibleReviewFormComponent}</div>

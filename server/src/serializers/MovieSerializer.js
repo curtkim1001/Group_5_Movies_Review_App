@@ -1,7 +1,7 @@
 import ReviewSerializer from "./ReviewSerializer.js";
 
 class MovieSerializer {
-  static async getSummary(movie) {
+  static async getSummary(movie, currentUser) {
     const allowedAttributes = ["id", "title", "year", "genre", "synopsis", "movieImageUrl"];
 
     const serializedMovie = {};
@@ -10,7 +10,7 @@ class MovieSerializer {
     }
     const reviews = await movie.$relatedQuery("reviews");
     const serializedReviews = await ReviewSerializer.showDetails(reviews);
-      
+
     serializedMovie.reviews = serializedReviews;
     return serializedMovie;
   }

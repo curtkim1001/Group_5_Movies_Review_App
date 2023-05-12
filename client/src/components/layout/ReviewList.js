@@ -1,19 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+import translateServerErrors from "../../services/translateServerErrors";
+import ReviewTile from "./ReviewTile.js";
 
 const ReviewList = (props) => {
-  const allReviewsArray = props.movieReviews.map((reviews) => {
-    let message = "";
-    if (reviews.spoilerWarning === true) {
-      message = "Spoiler Alert!";
-    }
+  const allReviewsArray = props.movieReviews.map((review) => {
     return (
-      <div key={reviews.id} className="callout review-show rounded-corner">
-        <p>Reeler: {reviews.user.username}</p>
-        <div className="spoiler-text">
-          <p>{message}</p>
-        </div>
-        <h4>{reviews.content}</h4>
-        <p>Rating: {reviews.rating}</p>
+      <div key={review.id}>
+        <ReviewTile review={review} movieId={props.movieId} />
       </div>
     );
   });
