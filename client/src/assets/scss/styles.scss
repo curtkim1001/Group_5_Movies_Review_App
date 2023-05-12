@@ -77,6 +77,7 @@ body {
     width: auto;
     height: 600px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
   }
 }
 .content {
@@ -85,7 +86,6 @@ body {
 }
 
 .movie-content {
- 
   text-align: center;
   margin-left: auto;
   margin-right: auto;
@@ -173,10 +173,12 @@ body {
 .profile-box {
   margin-top: 3%;
   h2 {
+    font-weight: bolder;
     color: $headings;
   }
   p {
     color: $secondary-background;
+    font-weight: 500;
   }
 }
 
@@ -186,6 +188,7 @@ body {
   margin-right: 5%;
   background-color: $secondary-background;
   border: solid 3px $headings;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
   p {
     background-color: $headings;
     color: $background;
@@ -198,6 +201,7 @@ body {
   background-color: $secondary-background;
   padding-bottom: 1%;
   padding-top: 4%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 6px 10px rgba(0, 0, 0, 0.1);
   .profile-pic {
     margin-left: 5%;
     margin-right: 5%;
@@ -243,32 +247,20 @@ body {
   border-radius: 8px;
 }
 
-
 .review-box {
   border: solid 3px $secondary-background;
   background-color: $headings;
   margin-left: 5em;
   margin-right: 5em;
-  
+
   h4 {
     margin-left: 40px;
     color: $background;
     font-weight: bold;
   }
-  
+
   p {
     margin-left: 40px;
     color: $background;
   }
-}
-
-.liked {svg[data-icon="thumbs-up"] {
-  path {
-    fill: red; // Set the desired color here
-  }
-}}
-
-
-.disliked {
-  color: red;
 }

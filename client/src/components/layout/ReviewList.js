@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import translateServerErrors from "../../services/translateServerErrors";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+// import translateServerErrors from "../../services/translateServerErrors";
 import ReviewTile from "./ReviewTile.js";
 
 const ReviewList = (props) => {
