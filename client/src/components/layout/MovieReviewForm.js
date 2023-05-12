@@ -76,13 +76,14 @@ const MovieReviewForm = ({ movie, movieId, reviews, setReviews }) => {
   };
 
   return (
-    <div className="callout">
+    <div className="callout create-review rounded-corner">
       <h1>Submit a review for {movie.title}</h1>
       <ErrorList errors={errors} />
       <form onSubmit={handleSubmit}>
         <label>
           Content:
           <input
+            className="review-text-box rounded-corner"
             type="text"
             name="content"
             onChange={handleInputChange}
@@ -92,7 +93,13 @@ const MovieReviewForm = ({ movie, movieId, reviews, setReviews }) => {
 
         <label htmlFor="rating">
           Rating:
-          <select id="rating" value={newReview.rating} onChange={handleInputChange} name="rating">
+          <select
+            className="rating-box"
+            id="rating"
+            value={newReview.rating}
+            onChange={handleInputChange}
+            name="rating"
+          >
             <option value="empty"></option>
             <option value="1">1 reel</option>
             <option value="2">2 reels</option>
@@ -105,6 +112,7 @@ const MovieReviewForm = ({ movie, movieId, reviews, setReviews }) => {
         <label>
           Spoilers in Review
           <input
+            className="spoiler-box"
             type="checkbox"
             name="spoilerWarning"
             value={newReview.spoilerWarning}

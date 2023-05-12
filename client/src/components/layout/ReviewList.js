@@ -1,8 +1,8 @@
-import React, { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
-import translateServerErrors from "../../services/translateServerErrors";
-import ReviewTile from "./ReviewTile.js"
+import React, { useState } from "react";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faThumbsUp, faThumbsDown } from "@fortawesome/free-solid-svg-icons";
+// import translateServerErrors from "../../services/translateServerErrors";
+import ReviewTile from "./ReviewTile.js";
 
 const ReviewList = (props) => {
     const allReviewsArray = props.movieReviews.map(review => {
@@ -13,7 +13,7 @@ const ReviewList = (props) => {
         )
     })
 
-    return <>{allReviewsArray}</>;
+  return <>{allReviewsArray}</>;
 };
 
 export default ReviewList;
