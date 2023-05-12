@@ -3,9 +3,9 @@ import config from "../../config";
 import FormError from "../layout/FormError";
 
 const SignInForm = () => {
-  const [userPayload, setUserPayload] = useState({ 
-    email: "", 
-    password: ""
+  const [userPayload, setUserPayload] = useState({
+    email: "",
+    password: "",
   });
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [errors, setErrors] = useState({});
@@ -31,13 +31,13 @@ const SignInForm = () => {
 
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      return true
+      return true;
     }
-    return false
+    return false;
   };
 
   const onSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     if (validateInput(userPayload)) {
       try {
         if (Object.keys(errors).length === 0) {
@@ -46,21 +46,21 @@ const SignInForm = () => {
             body: JSON.stringify(userPayload),
             headers: new Headers({
               "Content-Type": "application/json",
-            })
-          })
-          if(!response.ok) {
-            const errorMessage = `${response.status} (${response.statusText})`
-            const error = new Error(errorMessage)
-            throw(error)
+            }),
+          });
+          if (!response.ok) {
+            const errorMessage = `${response.status} (${response.statusText})`;
+            const error = new Error(errorMessage);
+            throw error;
           }
-          const userData = await response.json()
-          setShouldRedirect(true)
+          const userData = await response.json();
+          setShouldRedirect(true);
         }
-      } catch(err) {
-        console.error(`Error in fetch: ${err.message}`)
+      } catch (err) {
+        console.error(`Error in fetch: ${err.message}`);
       }
     }
-  }
+  };
 
   const onInputChange = (event) => {
     setUserPayload({
@@ -78,13 +78,18 @@ const SignInForm = () => {
       <h1>Sign In</h1>
       <form>
         <div className="grid-x">
-          <div className="center small-4"> 
-
-          <label className="welcome-message">
-            Email
-            <input type="text" name="email"  placeholder="Email" value={userPayload.email} onChange={onInputChange} />
-            <FormError error={errors.email} />
-          </label>
+          <div className="center small-4">
+            <label className="welcome-message">
+              Email
+              <input
+                type="text"
+                name="email"
+                placeholder="Email"
+                value={userPayload.email}
+                onChange={onInputChange}
+              />
+              <FormError error={errors.email} />
+            </label>
           </div>
         </div>
 
@@ -98,12 +103,12 @@ const SignInForm = () => {
                 placeholder="Password"
                 value={userPayload.password}
                 onChange={onInputChange}
-                />
+              />
               <FormError error={errors.password} />
             </label>
           </div>
         </div>
-        
+
         <div>
           <input type="submit" className="button" value="Sign In" />
         </div>
