@@ -7,11 +7,13 @@ const ReviewList = (props) => {
       message = "Spoiler Alert!";
     }
     return (
-      <div key={reviews.id} className="callout review-show">
-        <p>Username is: {reviews.user.username}</p>
+      <div key={reviews.id} className="callout review-show rounded-corner">
+        <p>Reeler: {reviews.user.username}</p>
+        <div className="spoiler-text">
+          <p>{message}</p>
+        </div>
         <h4>{reviews.content}</h4>
         <p>Rating: {reviews.rating}</p>
-        <p>{message}</p>
       </div>
     );
   });

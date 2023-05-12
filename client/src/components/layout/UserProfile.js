@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProfileImage from "./ProfileImage.js";
-import Dropzone from "react-dropzone"
+import Dropzone from "react-dropzone";
 
 const UserProfile = ({ user }) => {
   const [userReviews, setUserReviews] = useState([]);
@@ -14,6 +14,7 @@ const UserProfile = ({ user }) => {
         throw error;
       }
       const reviewBody = await response.json();
+      console.log(reviewBody);
       setUserReviews(reviewBody.reviews);
     } catch (error) {
       console.error(`Error in fetch: ${error.message}`);
@@ -25,19 +26,33 @@ const UserProfile = ({ user }) => {
   }, []);
 
   const reviewsArray = userReviews.map((review) => {
+    console.log(review);
     return (
-        <p key={review.id}>{review.content}</p>
+      <div key={review.id}>
+        <p>{review.content}</p>
+      </div>
     );
   });
   return (
     <div>
-      <h2>Account Information:</h2>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-      <ProfileImage />
-      <div className="callout review-show">
+      <div className="grid-x grid-container">
+        <div className="profile-box cell medium-6">
+          <div className="cell">
+            <h2>Account Information:</h2>
+            <p>Username: {user.username}</p>
+            <p>Email: {user.email}</p>
+          </div>
+        </div>
+        <div className="profile-box cell medium-6">
+          <div className="image-box cell rounded-corner">
+            <ProfileImage />
+          </div>
+        </div>
+      </div>
+      <div className="callout profile-reviews rounded-corner">
         <h3>User's Reviews</h3>
-        {reviewsArray}</div>
+        {reviewsArray}
+      </div>
     </div>
   );
 };
